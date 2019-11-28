@@ -13,91 +13,168 @@
 	<!-- FONTAWESOME -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <!-- SCROLLBAR -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="css/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="functions.js"></script>
 </head>
 <body>
 
-	<div class="wrapper">
-        <nav id="sidebar">
-            <div id="dismiss">
-                <i class="fas fa-arrow-left"></i>
+    <div class="bg" id="bg" onclick="closeModal()"></div>
+
+    <div class="container-fluid full nopadding">
+        <div class="alert flex-vertical col-xs-12 col-sm-12 col-md-12" id="deleteUser">
+            <h2>¿Desea eliminar al usuario seleccionado?</h2>
+            <div class="flex btns">
+                <button class="col-xs-6">Si</button>
+                <button class="col-xs-6" onclick="closeModal()">No</button>
             </div>
+        </div>
 
-            <div class="sidebar-header">
-                <h3>Taller Node Js</h3>
-            </div>
-
-            <ul class="list-unstyled components">
-                <li class="active">
-                    <a href="#">Inicio</a>
-                </li>
-                <li>
-                    <a href="diagnostico.html">Diagnóstico</a>
-                </li>
-                <li>
-                    <a href="nosotras.html">Información de equipo</a>
-                </li>
-            </ul>
-        </nav>
-
-        <div id="content">
-            <nav class="navbar navbar-expand-lg">
-                <div class="flex-between">
-                    <span><a href="#">Taller Node Js</a></span>
-                    <button type="button" id="sidebarCollapse" class="flex-vertical">
-                        <i class="fas fa-bars" style="font-size: 1.2em;"></i>
-                    </button>
+        <div class="modals flex-vertical col-xs-12 col-sm-4 col-md-4" id="modals">
+            <div class="box2 flex-vertical col-xs-11">
+                <div class="flex-start col-xs-12">
+                    <h2 style="font-size: 1.2em;">Alta de usuarios</h2>
                 </div>
-            </nav>
 
-            <ul class="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+                <br>
 
-            <div class="main flex-vertical col-xs-12">
-                
+                <div class="flex-vertical col-xs-12">
+                    <input type="text" placeholder="Nombre(s)" required>
+                </div>
+
+                <br>
+
+                <div class="flex-vertical col-xs-12">
+                    <input type="text" placeholder="Apellidos" required>
+                </div>
+
+                <br>
+
+                <div class="flex-vertical col-xs-12">
+                    <input type="number" placeholder="Teléfono" required>
+                </div>
+
+                <br>
+
+                <div class="flex-vertical col-xs-12">
+                    <input type="email" placeholder="Correo electrónico" required>
+                </div>
+
+                <br>
+
+                <div class="flex-vertical col-xs-12">
+                    <input type="text" placeholder="Domicilio" required>
+                </div>
+
+                <br>
+
+                <button class="flex col-xs-6 add">Agregar usuario</button>
+            </div>
+        </div>
+
+        <div class="modals flex-vertical col-xs-12 col-sm-4 col-md-4" id="changeData">
+            <div class="box2 flex-vertical col-xs-11">
+                <div class="flex-start col-xs-12">
+                    <h2 style="font-size: 1.2em;">Modificar datos</h2>
+                </div>
+
+                <br>
+
+                <div class="flex-vertical col-xs-12">
+                    <input type="text" placeholder="Nombre(s)" required>
+                </div>
+
+                <br>
+
+                <div class="flex-vertical col-xs-12">
+                    <input type="text" placeholder="Apellidos" required>
+                </div>
+
+                <br>
+
+                <div class="flex-vertical col-xs-12">
+                    <input type="number" placeholder="Teléfono" required>
+                </div>
+
+                <br>
+
+                <div class="flex-vertical col-xs-12">
+                    <input type="email" placeholder="Correo electrónico" required>
+                </div>
+
+                <br>
+
+                <div class="flex-vertical col-xs-12">
+                    <input type="text" placeholder="Domicilio" required>
+                </div>
+
+                <br>
+
+                <button class="flex col-xs-6 add">Modificar datos</button>
+            </div>
+        </div>
+
+        <div class="content nopadding">
+            <div class="nav col-xs-12 col-sm-12 col-md-12">
+                <h2>Taller Node Js</h2> 
+
+                <a href="">Cerrar sesión</a>
+            </div>
+
+            <div class="principal col-xs-12 col-sm-12 col-md-12">
+                <div class="title flex-between col-xs-12 col-sm-12 col-md-12">
+                    <h2>Listado de usuarios</h2>
+                    <a onclick="openModal()">Alta de  usuarios</a>
+                </div>
+
+                <!-- <div class="ind flex-vertical col-xs-12 col-sm-12 col-md-12">
+                    <p>Ingresa el nombre de usuario que necesite.</p>
+                </div> -->
+
+                <div class="search flex col-xs-12 ol-sm-12 col-md-12">
+                    <input type="search" name="" placeholder="Usuario por nombre" class="col-xs-11 col-sm-5" id="search">
+                    <button class="col-xs-1 col-sm-1">Buscar</button>
+                </div>
+
+                <div class="list flex-vertical col-xs-12 ol-sm-12 col-md-12" id="users">
+                    <div class="code flex-around col-xs-12 col-sm-5 col-md-5">
+                        <p>Nombre</p>
+                        <p>Opciones de usuario</p>
+                    </div>
+
+                    <div class="not flex-vertical col-xs-12 ol-sm-5 col-md-5">
+                        <p>No hay usuarios disponibles</p>
+                    </div> 
+
+                    <!-- USER -->
+                    <div class="user flex-between col-xs-12 col-sm-5 col-md-5" id="user">
+                        <div class="col-xs-6 flex-between">
+                            <p>María Fernanda Juárez Tirado</p>
+                        </div>
+                        <div class="col-xs-6 flex-around">
+                            <p onclick="changeData()"><i class="fas fa-pen-square" title="Editar usuario"></i></p>
+                            <p onclick="deleteUser()"><i class="fas fa-minus-square" title="Eliminar usuario"></i></p>
+                        </div>
+                    </div>
+
+                    <div class="user flex-between col-xs-12 col-sm-5 col-md-5" id="user">
+                        <div class="col-xs-6 flex-between">
+                            <p>Antonio Berrinches Dramas</p>
+                        </div>
+                        <div class="col-xs-6 flex-around">
+                            <p onclick="changeData()"><i class="fas fa-pen-square" title="Editar usuario"></i></p>
+                            <p onclick="deleteUser()"><i class="fas fa-minus-square" title="Eliminar usuario"></i></p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
-
-	<!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <!-- JQUERY SCROLLER -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
-	<script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-
-            $('#dismiss, .overlay').on('click', function () {
-                $('#sidebar').removeClass('active');
-                $('.overlay').removeClass('active');
-            });
-
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').addClass('active');
-                $('.overlay').addClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-    </script>
 
 </body>
 </html>
