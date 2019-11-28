@@ -59,21 +59,24 @@ employee.put("/:id([0-9]{1,3})", (req, res) => {
     res.send(query);
 });
 
-employee.get("/:id([0-9]{1,3})", (req, res) => {
-    const id = req.params.id;
-    const query = `SELECT * FROM company WHERE employee_id=${id}`;
+pokemon.get('/:name([A-Za-z]+)', (req, res) => {
+    const name = req.params.name;
+    const query = "SELECT * FROM company WHERE name = '" + name + "'";
     db.query(query).then(rows => {
         if (rows.length > 0) {
             res.status(200);
             res.json(rows);
         }
-        res.status(404);
-        res.send("No se encontró al empleado");
+        else {
+            res.status(404);
+            res.send("No se encontró el empleado");
+        }
     }).catch(err => {
-        console.log(err); 
+        console.log(err);
         res.status(500);
-        res.send("Ocurrió algo mal");
+        res.send("Algo salió mal");
     });
-});
+})
+
 
 module.exports = employee;
