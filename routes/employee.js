@@ -2,20 +2,22 @@ const db = require('../config/database');
 const express = require('express');
 const employee = express.Router();
 
-// pokemon.get("/", (req, res) => {
-//     db.query("SELECT * FROM pokemon").then(rows => {
-//         res.status(200);
-//         res.json(rows);
-//     }).catch(err => {
-//         console.log(err);
-//         res.status(500);
-//         res.send("Ocurrió algo mal");
-//     });
-// });
+employee.get("/", (req, res) => {
+    db.query("SELECT * FROM employee").then(rows => {
+        res.status(200);
+        res.json(rows);
+    }).catch(err => {
+        console.log(err);
+        res.status(500);
+        res.send("Ocurrió algo mal");
+    });
+});
 
 employee.post("/", (req, res) => {
+    console.log(req)
     query = "INSERT INTO employee (name, last_name, phone_number, email, address) ";
-    query += `VALUES ('${req.body.name}', ${req.body.last_name}, ${req.body.phone_number}, ${req.body.email}, ${req.body.adress})`;
+    query += `VALUES ('${req.body.name}', '${req.body.last_name}', '${req.body.phone_number}', '${req.body.email}', '${req.body.address}')`;
+    console.log(query)
     db.query(query).then(rows => {
         if(rows.affectedRows > 0) {
             res.status(201);
@@ -28,8 +30,8 @@ employee.post("/", (req, res) => {
     });
 });
 
-employee.delete("/:/id/([0 9]{1, 3})", (req, res) => {
-    query = `DELETE FROM company WHERE employee_id=${req.params.id}`;
+employee.delete("/:name([A-Za-z]+)", (req, res) => {
+    query = `DELETE FROM employee WHERE name='${req.params.name}'`;
     db.query(query).then(rows => {
         res.status(404);
         console.log("rows");
@@ -41,10 +43,10 @@ employee.delete("/:/id/([0 9]{1, 3})", (req, res) => {
     });
 });
 
-employee.put("/:id([0-9]{1,3})", (req, res) => {
-    const columns = Object.keys(req.body)
-    const values = Object.values(req.body)
-    query = "UPDATE company SET";
+employee.put("/:name([A-Za-z]+)", (req, res) => {
+    const columns = Object.keys(req.body.data)
+    const values = Object.values(req.body.data)
+    query = "UPDATE employee SET ";
     for(let i = 0; i < columns.length; i++){
         query += `${columns[i]} = `;
         query += isNaN(values[i]) ? `'${values[i]}'` : `${values[i]}`;
@@ -55,13 +57,20 @@ employee.put("/:id([0-9]{1,3})", (req, res) => {
             query += " ";
         }
     }
-    query += `WHERE employee_id = ${req.params.id}`;
-    res.send(query);
+    query += `WHERE name = '${req.params.name}'`;
+    db.query(query).then(rows =>{
+        res.status(200)
+        res.send(rows)
+    }).catch(err =>{
+        console.log(err)
+        res.status(500)
+        res.send("Algo salio mal")
+    })
 });
 
-pokemon.get('/:name([A-Za-z]+)', (req, res) => {
+employee.get('/:name([A-Za-z]+)', (req, res) => {
     const name = req.params.name;
-    const query = "SELECT * FROM company WHERE name = '" + name + "'";
+    const query = "SELECT * FROM employee WHERE name = '" + name + "'";
     db.query(query).then(rows => {
         if (rows.length > 0) {
             res.status(200);

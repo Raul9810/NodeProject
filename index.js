@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/user", user);
-app.use(auth);
+//app.use(auth);
 app.use("/employee", employee);
 app.use(notFoundHandler);
 

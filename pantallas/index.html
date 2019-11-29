@@ -14,13 +14,15 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="css/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="css/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="login.js" defer></script>
 </head>
 <body>
 
 	<div class="container-fluid full nopadding">
 		<div class="alert flex-vertical col-xs-12 col-sm-12 col-md-12">
 			<h2>Ha ocurrido un error</h2>
-			<p>Revisa usuario y/o contraseña</p>
+			<p>Revisa correo y/o contraseña</p>
 		</div>
 
 		<div class="login flex-vertical-s">
@@ -36,18 +38,18 @@
 				<br>
 
 				<div class="flex-vertical col-xs-12">
-					<input type="text" placeholder="Usuario">
+					<input type="text" placeholder="Correo" id="input-mail">
 				</div>
 
 				<br>
 
 				<div class="flex-vertical col-xs-12">
-					<input type="password" placeholder="Contraseña">
+					<input type="password" placeholder="Contraseña" id="input-password">
 				</div>
 
 				<br>
 
-				<button class="flex col-xs-6">Ingresar</button>
+				<button class="flex col-xs-6" id="go">Ingresar</button>
 			</div>
 
 			<div class="cred flex col-xs-12 col-sm-12 col-md-12">

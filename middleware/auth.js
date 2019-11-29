@@ -2,8 +2,11 @@ const jwt = require('jsonwebtoken');
 
 const auth = (req, res, next) => {
     try{
-        const token = req.headers.authorization.split(" ")[1];
+        console.log("Holi 1 ",req.body.headers.Authorization)
+        const token = req.headers.authorization.replace('bearer ', '')
+        console.log("Holi 2",token)
         const decoded = jwt.verify(token, "debugkey");
+        console.log("Holi 3",decoded)
         req.user = decoded;
         next();
     }

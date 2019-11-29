@@ -19,7 +19,8 @@
     <script type="text/javascript" src="css/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="functions.js"></script>
+    <script type="text/javascript" src="functions.js" defer></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 
@@ -29,7 +30,7 @@
         <div class="alert flex-vertical col-xs-12 col-sm-12 col-md-12" id="deleteUser">
             <h2>¿Desea eliminar al usuario seleccionado?</h2>
             <div class="flex btns">
-                <button class="col-xs-6">Si</button>
+                <button class="col-xs-6" onclick="deleteData()">Si</button>
                 <button class="col-xs-6" onclick="closeModal()">No</button>
             </div>
         </div>
@@ -43,78 +44,42 @@
                 <br>
 
                 <div class="flex-vertical col-xs-12">
-                    <input type="text" placeholder="Nombre(s)" required>
+                    <input type="text" placeholder="Nombre(s)" class="name" required>
                 </div>
 
                 <br>
 
                 <div class="flex-vertical col-xs-12">
-                    <input type="text" placeholder="Apellidos" required>
+                    <input type="text" placeholder="Apellidos" class="last_name" required>
                 </div>
 
                 <br>
 
                 <div class="flex-vertical col-xs-12">
-                    <input type="number" placeholder="Teléfono" required>
+                    <input type="number" placeholder="Teléfono" class="phone_number" required>
                 </div>
 
                 <br>
 
                 <div class="flex-vertical col-xs-12">
-                    <input type="email" placeholder="Correo electrónico" required>
+                    <input type="email" placeholder="Correo electrónico" class="email" required>
                 </div>
 
                 <br>
 
                 <div class="flex-vertical col-xs-12">
-                    <input type="text" placeholder="Domicilio" required>
+                    <input type="text" placeholder="Domicilio" class="address" required>
                 </div>
 
                 <br>
 
-                <button class="flex col-xs-6 add">Agregar usuario</button>
+                <button class="flex col-xs-6 add" onclick="createUser()">Agregar usuario</button>
             </div>
         </div>
 
         <div class="modals flex-vertical col-xs-12 col-sm-4 col-md-4" id="changeData">
-            <div class="box2 flex-vertical col-xs-11">
-                <div class="flex-start col-xs-12">
-                    <h2 style="font-size: 1.2em;">Modificar datos</h2>
-                </div>
-
-                <br>
-
-                <div class="flex-vertical col-xs-12">
-                    <input type="text" placeholder="Nombre(s)" required>
-                </div>
-
-                <br>
-
-                <div class="flex-vertical col-xs-12">
-                    <input type="text" placeholder="Apellidos" required>
-                </div>
-
-                <br>
-
-                <div class="flex-vertical col-xs-12">
-                    <input type="number" placeholder="Teléfono" required>
-                </div>
-
-                <br>
-
-                <div class="flex-vertical col-xs-12">
-                    <input type="email" placeholder="Correo electrónico" required>
-                </div>
-
-                <br>
-
-                <div class="flex-vertical col-xs-12">
-                    <input type="text" placeholder="Domicilio" required>
-                </div>
-
-                <br>
-
-                <button class="flex col-xs-6 add">Modificar datos</button>
+            <div class="box2 flex-vertical col-xs-11" id="change">
+                
             </div>
         </div>
 
@@ -140,36 +105,11 @@
                     <button class="col-xs-1 col-sm-1">Buscar</button>
                 </div>
 
-                <div class="list flex-vertical col-xs-12 ol-sm-12 col-md-12" id="users">
-                    <div class="code flex-around col-xs-12 col-sm-5 col-md-5">
-                        <p>Nombre</p>
-                        <p>Opciones de usuario</p>
-                    </div>
-
+                <div class="list flex-vertical col-xs-12 ol-sm-12 col-md-12" id="us">
                     <div class="not flex-vertical col-xs-12 ol-sm-5 col-md-5">
                         <p>No hay usuarios disponibles</p>
                     </div> 
-
                     <!-- USER -->
-                    <div class="user flex-between col-xs-12 col-sm-5 col-md-5" id="user">
-                        <div class="col-xs-6 flex-between">
-                            <p>María Fernanda Juárez Tirado</p>
-                        </div>
-                        <div class="col-xs-6 flex-around">
-                            <p onclick="changeData()"><i class="fas fa-pen-square" title="Editar usuario"></i></p>
-                            <p onclick="deleteUser()"><i class="fas fa-minus-square" title="Eliminar usuario"></i></p>
-                        </div>
-                    </div>
-
-                    <div class="user flex-between col-xs-12 col-sm-5 col-md-5" id="user">
-                        <div class="col-xs-6 flex-between">
-                            <p>Antonio Berrinches Dramas</p>
-                        </div>
-                        <div class="col-xs-6 flex-around">
-                            <p onclick="changeData()"><i class="fas fa-pen-square" title="Editar usuario"></i></p>
-                            <p onclick="deleteUser()"><i class="fas fa-minus-square" title="Eliminar usuario"></i></p>
-                        </div>
-                    </div>
 
                 </div>
             </div>
