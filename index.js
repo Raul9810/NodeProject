@@ -19,6 +19,8 @@ app.use(auth);
 app.use("/employee", employee);
 app.use(notFoundHandler);
 
-app.listen(3000, () => {
+const PORT = 3000;
+
+app.listen(process.env.PORT || PORT, () => {
     console.log("Server is running...");
 });
