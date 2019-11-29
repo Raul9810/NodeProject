@@ -4,7 +4,7 @@ const employee = express.Router();
 
 employee.get("/", (req, res) => {
     db.query("SELECT * FROM employee").then(rows => {
-        res.status(200);
+        res.status(200); 
         res.json(rows);
     }).catch(err => {
         console.log(err);

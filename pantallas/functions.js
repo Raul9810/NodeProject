@@ -14,7 +14,7 @@ function init(){
 $(document).ready(function(){
     $("#search").keyup(function(){
         _this = this;
-            $.each($("#users #user"), function() {
+            $.each($("#us #user"), function() {
                 if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
                     $(this).hide();
                 else
@@ -121,14 +121,14 @@ function createUser(){
         headers: {
             'Authorization': "bearer " + token,
         },
-        // name: values[0],
-        // last_name: values[1],
-        // phone_number: values[2],
-        // email: values[3],
-        // address: values[4],
+        name: values[0],
+        last_name: values[1],
+        phone_number: values[2],
+        email: values[3],
+        address: values[4],
         
         }).then(res =>{
-            //location.reload()
+            location.reload()
     }).catch(err =>{
         console.log(err)
     })
@@ -145,17 +145,18 @@ function deleteData(){
             location.reload()
     }).catch(err =>{
         console.log(err)
+        location.reload()
     })
 }
 
 function loadUsers() {
     const  token = localStorage.getItem("token");
-    axios.get("http://localhost:3000/employee/",{
+    axios.get("http://localhost:3000/employee",{
         headers: {
-            'Authorization': "bearer " + token,
-        },     
+            'Authorization': "bearer " + token
+        },
         }).then(res =>{
-            location.reload()
+            displayUsers(res)
     }).catch(err =>{
         console.log(err)
     })
@@ -179,4 +180,8 @@ function displayUsers(employee) {
             </div> \
         </div>`;
     }
+}
+
+function closeSession(){
+    localStorage.clear()
 }
